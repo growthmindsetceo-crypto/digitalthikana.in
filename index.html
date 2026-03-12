@@ -1,0 +1,1550 @@
+html_content = '''<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Thikana | Websites for Doctors, Lawyers & Realtors</title>
+    <meta name="description" content="Professional website design & SEO for doctors, lawyers, and real estate agents in India. Mobile-first, fast, and built to bring you clients.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary: #1e3a5f;
+            --primary-light: #2c5282;
+            --accent: #0d9488;
+            --accent-light: #14b8a6;
+            --text: #1f2937;
+            --text-light: #6b7280;
+            --bg: #ffffff;
+            --bg-alt: #f8fafc;
+            --border: #e5e7eb;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', 'Noto Sans Bengali', sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .logo-icon::before {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            border: 2px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(0.5); opacity: 1; }
+            100% { transform: scale(1.2); opacity: 0; }
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            box-shadow: var(--shadow);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-accent {
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            color: white;
+        }
+
+        .btn-outline {
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            background: transparent;
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--primary);
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 8rem 2rem 4rem;
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(13, 148, 136, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: white;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            box-shadow: var(--shadow);
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            line-height: 1.1;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .hero h1 span {
+            color: var(--accent);
+            position: relative;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+            max-width: 500px;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 2rem;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(0,0,0,0.1);
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.875rem;
+            color: var(--text-light);
+        }
+
+        .hero-visual {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-image-container {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+        }
+
+        .hero-main-image {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: var(--shadow-lg);
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            aspect-ratio: 4/3;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .floating-card {
+            position: absolute;
+            background: white;
+            padding: 1rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow-lg);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .floating-card.doctor {
+            top: 10%;
+            left: -10%;
+            animation-delay: 0s;
+        }
+
+        .floating-card.lawyer {
+            bottom: 20%;
+            right: -10%;
+            animation-delay: 1s;
+        }
+
+        .floating-card.realtor {
+            bottom: -5%;
+            left: 20%;
+            animation-delay: 2s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .card-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+        }
+
+        .card-icon.doctor { background: #dbeafe; color: #2563eb; }
+        .card-icon.lawyer { background: #fce7f3; color: #db2777; }
+        .card-icon.realtor { background: #d1fae5; color: #059669; }
+
+        .card-text {
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+
+        .card-sub {
+            font-size: 0.75rem;
+            color: var(--text-light);
+        }
+
+        /* Profession Paths */
+        .professions {
+            padding: 5rem 2rem;
+            background: var(--bg);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            color: var(--text-light);
+            font-size: 1.125rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .profession-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .profession-card {
+            background: var(--bg-alt);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .profession-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .profession-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin: 0 auto 1.5rem;
+        }
+
+        .profession-card.doctor .profession-icon { background: #dbeafe; color: #2563eb; }
+        .profession-card.lawyer .profession-icon { background: #fce7f3; color: #db2777; }
+        .profession-card.realtor .profession-icon { background: #d1fae5; color: #059669; }
+
+        .profession-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+
+        .profession-card p {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .profession-features {
+            list-style: none;
+            text-align: left;
+            margin-bottom: 1.5rem;
+        }
+
+        .profession-features li {
+            padding: 0.5rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .profession-features i {
+            color: var(--accent);
+        }
+
+        /* Results/Proof Section */
+        .results {
+            padding: 5rem 2rem;
+            background: var(--bg-alt);
+        }
+
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .result-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+        }
+
+        .result-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .result-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .result-meta h4 {
+            color: var(--primary);
+            margin-bottom: 0.25rem;
+        }
+
+        .result-meta span {
+            color: var(--text-light);
+            font-size: 0.875rem;
+        }
+
+        .result-metrics {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .metric {
+            background: var(--bg-alt);
+            padding: 1rem;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .metric-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        .metric-label {
+            font-size: 0.75rem;
+            color: var(--text-light);
+        }
+
+        .result-quote {
+            font-style: italic;
+            color: var(--text-light);
+            border-left: 3px solid var(--accent);
+            padding-left: 1rem;
+        }
+
+        /* Process Section */
+        .process {
+            padding: 5rem 2rem;
+            background: var(--bg);
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            position: relative;
+        }
+
+        .process-steps::before {
+            content: '';
+            position: absolute;
+            top: 40px;
+            left: 10%;
+            right: 10%;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent), var(--primary));
+            z-index: 0;
+        }
+
+        .step {
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .step-number {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: white;
+            border: 3px solid var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin: 0 auto 1.5rem;
+            position: relative;
+        }
+
+        .step-number::after {
+            content: '';
+            position: absolute;
+            inset: -5px;
+            border-radius: 50%;
+            border: 2px dashed var(--accent);
+            animation: spin 10s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .step h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .step p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        /* Pricing Section */
+        .pricing {
+            padding: 5rem 2rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+        }
+
+        .pricing .section-header h2,
+        .pricing .section-header p {
+            color: white;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .pricing-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .pricing-card.featured {
+            background: white;
+            color: var(--text);
+            transform: scale(1.05);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .pricing-card.featured .btn {
+            background: var(--accent);
+            color: white;
+        }
+
+        .badge-popular {
+            position: absolute;
+            top: -10px;
+            right: 20px;
+            background: var(--accent);
+            color: white;
+            padding: 0.25rem 1rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+
+        .pricing-header {
+            margin-bottom: 1.5rem;
+        }
+
+        .pricing-header h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .price {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .price span {
+            font-size: 1rem;
+            font-weight: 400;
+            opacity: 0.8;
+        }
+
+        .pricing-card.featured .price {
+            color: var(--primary);
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .pricing-features li {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .pricing-card.featured .pricing-features li {
+            border-bottom-color: var(--border);
+        }
+
+        .pricing-features i {
+            color: var(--accent-light);
+        }
+
+        .pricing-card.featured .pricing-features i {
+            color: var(--accent);
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 5rem 2rem;
+            background: var(--bg-alt);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .contact-options {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .contact-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .contact-card:hover {
+            border-color: var(--accent);
+            transform: translateX(10px);
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+        }
+
+        .contact-card.whatsapp .contact-icon { background: #d1fae5; color: #059669; }
+        .contact-card.call .contact-icon { background: #dbeafe; color: #2563eb; }
+        .contact-card.email .contact-icon { background: #fce7f3; color: #db2777; }
+
+        .contact-info h4 {
+            color: var(--primary);
+            margin-bottom: 0.25rem;
+        }
+
+        .contact-info p {
+            color: var(--text-light);
+            font-size: 0.875rem;
+        }
+
+        .contact-form {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            font-family: inherit;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary);
+            color: white;
+            padding: 3rem 2rem 1rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-brand p {
+            margin-top: 1rem;
+            opacity: 0.8;
+            line-height: 1.8;
+        }
+
+        .footer-links h4 {
+            margin-bottom: 1rem;
+            color: var(--accent-light);
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 2rem;
+            text-align: center;
+            opacity: 0.8;
+        }
+
+        /* Mobile Bottom Bar */
+        .mobile-bar {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            padding: 0.75rem;
+            box-shadow: 0 -4px 6px -1px rgba(0, 0, 0, 0.1);
+            z-index: 999;
+            gap: 0.5rem;
+        }
+
+        .mobile-bar .btn {
+            flex: 1;
+            justify-content: center;
+            padding: 0.75rem;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .profession-grid,
+            .pricing-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .process-steps {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .process-steps::before {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .hero p {
+                margin: 0 auto 2rem;
+            }
+            
+            .hero-cta {
+                justify-content: center;
+            }
+            
+            .hero-stats {
+                justify-content: center;
+            }
+            
+            .hero-visual {
+                order: -1;
+            }
+            
+            .profession-grid,
+            .pricing-grid,
+            .results-grid,
+            .contact-grid,
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .process-steps {
+                grid-template-columns: 1fr;
+            }
+            
+            .pricing-card.featured {
+                transform: none;
+            }
+            
+            .mobile-bar {
+                display: flex;
+            }
+            
+            body {
+                padding-bottom: 80px;
+            }
+            
+            .floating-card {
+                display: none;
+            }
+        }
+
+        /* Utility Classes */
+        .text-center { text-align: center; }
+        .mt-2 { margin-top: 2rem; }
+        
+        /* Smooth Scroll Offset for Fixed Header */
+        section[id] {
+            scroll-margin-top: 80px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-signal"></i>
+                </div>
+                <span>Digital Thikana</span>
+            </a>
+            
+            <ul class="nav-links">
+                <li><a href="#services">Services</a></li>
+                <li><a href="#results">Results</a></li>
+                <li><a href="#process">Process</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#contact" class="btn btn-primary">Start Project</a></li>
+            </ul>
+            
+            <button class="mobile-menu-btn" onclick="toggleMenu()">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <i class="fas fa-map-marker-alt"></i>
+                    Serving West Bengal & All India
+                </div>
+                
+                <h1>Websites That Bring <span>Clients</span> to Your Practice</h1>
+                
+                <p>Professional web design & SEO for Doctors, Lawyers, and Real Estate Agents. Mobile-first, fast, and built to convert visitors into appointments.</p>
+                
+                <div class="hero-cta">
+                    <a href="#pricing" class="btn btn-primary">
+                        <i class="fas fa-rocket"></i>
+                        View Pricing
+                    </a>
+                    <a href="https://wa.me/919641718709" class="btn btn-outline" target="_blank">
+                        <i class="fab fa-whatsapp"></i>
+                        Chat on WhatsApp
+                    </a>
+                </div>
+                
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-number">3</span>
+                        <span class="stat-label">Professions<br>Served</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">100%</span>
+                        <span class="stat-label">Mobile<br>Optimized</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">&lt;3s</span>
+                        <span class="stat-label">Load<br>Time</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="hero-visual">
+                <div class="hero-image-container">
+                    <div class="hero-main-image">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    
+                    <div class="floating-card doctor">
+                        <div class="card-icon doctor">
+                            <i class="fas fa-user-md"></i>
+                        </div>
+                        <div>
+                            <div class="card-text">Dr. Sen's Clinic</div>
+                            <div class="card-sub">+15 Patients/Month</div>
+                        </div>
+                    </div>
+                    
+                    <div class="floating-card lawyer">
+                        <div class="card-icon lawyer">
+                            <i class="fas fa-balance-scale"></i>
+                        </div>
+                        <div>
+                            <div class="card-text">Adv. Sharma & Assoc.</div>
+                            <div class="card-sub">3x Client Inquiries</div>
+                        </div>
+                    </div>
+                    
+                    <div class="floating-card realtor">
+                        <div class="card-icon realtor">
+                            <i class="fas fa-home"></i>
+                        </div>
+                        <div>
+                            <div class="card-text">Bengal Properties</div>
+                            <div class="card-sub">50+ Leads Generated</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Profession Paths -->
+    <section class="professions" id="services">
+        <div class="container">
+            <div class="section-header">
+                <h2>Choose Your Path</h2>
+                <p>Specialized solutions for your specific profession. Each industry has unique needs—we understand them all.</p>
+            </div>
+            
+            <div class="profession-grid">
+                <a href="#contact" class="profession-card doctor">
+                    <div class="profession-icon">
+                        <i class="fas fa-user-md"></i>
+                    </div>
+                    <h3>For Doctors</h3>
+                    <p>Patient-focused websites with appointment booking and medical credibility.</p>
+                    <ul class="profession-features">
+                        <li><i class="fas fa-check"></i> Online Appointment System</li>
+                        <li><i class="fas fa-check"></i> Patient Testimonials</li>
+                        <li><i class="fas fa-check"></i> Services & Specialties</li>
+                        <li><i class="fas fa-check"></i> HIPAA-Compliant Security</li>
+                    </ul>
+                    <span class="btn btn-outline" style="width: 100%; justify-content: center;">Get Started</span>
+                </a>
+                
+                <a href="#contact" class="profession-card lawyer">
+                    <div class="profession-icon">
+                        <i class="fas fa-balance-scale"></i>
+                    </div>
+                    <h3>For Lawyers</h3>
+                    <p>Authority-building sites that convert visitors into client consultations.</p>
+                    <ul class="profession-features">
+                        <li><i class="fas fa-check"></i> Case Result Showcases</li>
+                        <li><i class="fas fa-check"></i> Practice Areas</li>
+                        <li><i class="fas fa-check"></i> Client Consultation Booking</li>
+                        <li><i class="fas fa-check"></i> Professional Blog</li>
+                    </ul>
+                    <span class="btn btn-outline" style="width: 100%; justify-content: center;">Get Started</span>
+                </a>
+                
+                <a href="#contact" class="profession-card realtor">
+                    <div class="profession-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <h3>For Realtors</h3>
+                    <p>Property showcase platforms designed to generate qualified leads.</p>
+                    <ul class="profession-features">
+                        <li><i class="fas fa-check"></i> Property Listings & Gallery</li>
+                        <li><i class="fas fa-check"></i> Virtual Tour Integration</li>
+                        <li><i class="fas fa-check"></i> Lead Capture Forms</li>
+                        <li><i class="fas fa-check"></i> Neighborhood Guides</li>
+                    </ul>
+                    <span class="btn btn-outline" style="width: 100%; justify-content: center;">Get Started</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results Section -->
+    <section class="results" id="results">
+        <div class="container">
+            <div class="section-header">
+                <h2>Proven Results</h2>
+                <p>Real outcomes for real professionals. Your success is our only metric.</p>
+            </div>
+            
+            <div class="results-grid">
+                <div class="result-card">
+                    <div class="result-header">
+                        <div class="result-avatar">DS</div>
+                        <div class="result-meta">
+                            <h4>Dr. Debashish Sen</h4>
+                            <span>Cardiologist, Kolkata</span>
+                        </div>
+                    </div>
+                    <div class="result-metrics">
+                        <div class="metric">
+                            <div class="metric-value">300%</div>
+                            <div class="metric-label">More Appointments</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">#1</div>
+                            <div class="metric-label">Google Ranking</div>
+                        </div>
+                    </div>
+                    <p class="result-quote">"Digital Thikana understood exactly what my patients look for. My appointment bookings tripled within 2 months of launch."</p>
+                </div>
+                
+                <div class="result-card">
+                    <div class="result-header">
+                        <div class="result-avatar">PB</div>
+                        <div class="result-meta">
+                            <h4>Priya Banerjee</h4>
+                            <span>Real Estate Consultant, Howrah</span>
+                        </div>
+                    </div>
+                    <div class="result-metrics">
+                        <div class="metric">
+                            <div class="metric-value">45+</div>
+                            <div class="metric-label">Qualified Leads</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">5x</div>
+                            <div class="metric-label">ROI Increase</div>
+                        </div>
+                    </div>
+                    <p class="result-quote">"The property showcase feature is incredible. Buyers can see everything before calling, so I only get serious inquiries now."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="process" id="process">
+        <div class="container">
+            <div class="section-header">
+                <h2>How We Work</h2>
+                <p>Simple, transparent process designed for busy professionals. No tech jargon, just results.</p>
+            </div>
+            
+            <div class="process-steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Discovery</h3>
+                    <p>30-minute call to understand your practice, goals, and patient/client needs.</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Design</h3>
+                    <p>You approve mockups before we build. No surprises, only satisfaction.</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Build</h3>
+                    <p>Mobile-first development with SEO optimization and fast loading speeds.</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>Launch & Grow</h3>
+                    <p>Go live with 30 days of support and analytics training included.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <div class="section-header">
+                <h2>Investment Plans</h2>
+                <p>Transparent pricing with no hidden costs. Choose what fits your current stage.</p>
+            </div>
+            
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3>Professional Starter</h3>
+                        <div class="price">₹9,400<span>/one-time</span></div>
+                        <p>Perfect for establishing your online presence</p>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> 5-Page Responsive Website</li>
+                        <li><i class="fas fa-check"></i> Mobile & Tablet Optimized</li>
+                        <li><i class="fas fa-check"></i> Basic SEO Setup</li>
+                        <li><i class="fas fa-check"></i> Contact Form Integration</li>
+                        <li><i class="fas fa-check"></i> 1 Month Support</li>
+                    </ul>
+                    <a href="https://wa.me/919641718709?text=Hi%20Mihir,%20I'm%20interested%20in%20the%20Professional%20Starter%20plan" class="btn btn-outline" style="width: 100%; justify-content: center;" target="_blank">
+                        <i class="fab fa-whatsapp"></i> Get Started
+                    </a>
+                </div>
+                
+                <div class="pricing-card featured">
+                    <span class="badge-popular">MOST POPULAR</span>
+                    <div class="pricing-header">
+                        <h3>Business Growth</h3>
+                        <div class="price">₹14,800<span>/one-time</span></div>
+                        <p>Complete solution for growing practices</p>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> 10-Page Responsive Website</li>
+                        <li><i class="fas fa-check"></i> Advanced SEO & Speed Optimization</li>
+                        <li><i class="fas fa-check"></i> Appointment/Booking System</li>
+                        <li><i class="fas fa-check"></i> Blog Setup & Content Strategy</li>
+                        <li><i class="fas fa-check"></i> Google Business Integration</li>
+                        <li><i class="fas fa-check"></i> 3 Months Priority Support</li>
+                    </ul>
+                    <a href="https://wa.me/919641718709?text=Hi%20Mihir,%20I'm%20interested%20in%20the%20Business%20Growth%20plan" class="btn" style="width: 100%; justify-content: center;" target="_blank">
+                        <i class="fab fa-whatsapp"></i> Get Started
+                    </a>
+                </div>
+                
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3>Elite Brand Authority</h3>
+                        <div class="price">₹22,600<span>/one-time</span></div>
+                        <p>Premium presence for established professionals</p>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> Unlimited Pages</li>
+                        <li><i class="fas fa-check"></i> Custom Functionality</li>
+                        <li><i class="fas fa-check"></i> Premium SEO & Content</li>
+                        <li><i class="fas fa-check"></i> Patient/Client Portal</li>
+                        <li><i class="fas fa-check"></i> Advanced Analytics Dashboard</li>
+                        <li><i class="fas fa-check"></i> 6 Months VIP Support</li>
+                        <li><i class="fas fa-check"></i> Priority Updates & Maintenance</li>
+                    </ul>
+                    <a href="https://wa.me/919641718709?text=Hi%20Mihir,%20I'm%20interested%20in%20the%20Elite%20Brand%20Authority%20plan" class="btn btn-outline" style="width: 100%; justify-content: center;" target="_blank">
+                        <i class="fab fa-whatsapp"></i> Get Started
+                    </a>
+                </div>
+            </div>
+            
+            <div class="text-center mt-2">
+                <p style="opacity: 0.9;">All plans include: SSL Certificate, 1 Year Hosting, Mobile Optimization, and WhatsApp Integration</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2>Start Your Project</h2>
+                <p>Three ways to reach us. Choose what works best for you.</p>
+            </div>
+            
+            <div class="contact-grid">
+                <div class="contact-options">
+                    <a href="https://wa.me/919641718709" class="contact-card whatsapp" target="_blank">
+                        <div class="contact-icon">
+                            <i class="fab fa-whatsapp"></i>
+                        </div>
+                        <div class="contact-info">
+                            <h4>WhatsApp</h4>
+                            <p>Fastest response. Available 9 AM - 9 PM IST</p>
+                        </div>
+                        <i class="fas fa-arrow-right" style="margin-left: auto; color: var(--accent);"></i>
+                    </a>
+                    
+                    <a href="tel:+919641718709" class="contact-card call">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="contact-info">
+                            <h4>Call Directly</h4>
+                            <p>+91 96417 18709</p>
+                        </div>
+                        <i class="fas fa-arrow-right" style="margin-left: auto; color: var(--accent);"></i>
+                    </a>
+                    
+                    <a href="mailto:mihir@digitalthikana.com" class="contact-card email">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-info">
+                            <h4>Email</h4>
+                            <p>mihir@digitalthikana.com</p>
+                        </div>
+                        <i class="fas fa-arrow-right" style="margin-left: auto; color: var(--accent);"></i>
+                    </a>
+                    
+                    <div style="margin-top: 2rem; padding: 1.5rem; background: white; border-radius: 15px;">
+                        <h4 style="color: var(--primary); margin-bottom: 0.5rem;">Mihir Dutta</h4>
+                        <p style="color: var(--text-light); font-size: 0.9rem;">Founder & Lead Designer<br>Digital Thikana</p>
+                        <p style="margin-top: 1rem; font-size: 0.875rem; color: var(--text-light);">
+                            <i class="fas fa-map-marker-alt" style="color: var(--accent);"></i> 
+                            Based in West Bengal, Serving All India
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <h3 style="margin-bottom: 1.5rem; color: var(--primary);">Request a Proposal</h3>
+                    <form onsubmit="handleSubmit(event)">
+                        <div class="form-group">
+                            <label>Your Name</label>
+                            <input type="text" placeholder="Dr. / Adv. / Mr. Your Name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Profession</label>
+                            <select required>
+                                <option value="">Select your profession</option>
+                                <option value="doctor">Doctor / Medical Professional</option>
+                                <option value="lawyer">Lawyer / Legal Professional</option>
+                                <option value="realtor">Real Estate Agent / Broker</option>
+                                <option value="other">Other Professional Service</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Phone Number</label>
+                            <input type="tel" placeholder="+91 98765 43210" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Tell us about your needs</label>
+                            <textarea placeholder="e.g., I need a website for my cardiology practice with online appointment booking..."></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">
+                            <i class="fas fa-paper-plane"></i>
+                            Send Request
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="logo" style="color: white;">
+                        <div class="logo-icon">
+                            <i class="fas fa-signal"></i>
+                        </div>
+                        <span>Digital Thikana</span>
+                    </div>
+                    <p>Your digital presence is your reputation. We build websites that establish trust, showcase expertise, and convert visitors into clients for doctors, lawyers, and real estate professionals across India.</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#services">For Doctors</a></li>
+                        <li><a href="#services">For Lawyers</a></li>
+                        <li><a href="#services">For Realtors</a></li>
+                        <li><a href="#pricing">Pricing</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#process">Our Process</a></li>
+                        <li><a href="#results">Results</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><a href="https://wa.me/919641718709" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a></li>
+                        <li><a href="tel:+919641718709"><i class="fas fa-phone"></i> +91 96417 18709</a></li>
+                        <li><a href="mailto:mihir@digitalthikana.com"><i class="fas fa-envelope"></i> Email</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Digital Thikana. All rights reserved. | Designed with <i class="fas fa-heart" style="color: var(--accent-light);"></i> in West Bengal</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Bottom Bar -->
+    <div class="mobile-bar">
+        <a href="https://wa.me/919641718709" class="btn btn-accent" target="_blank">
+            <i class="fab fa-whatsapp"></i> WhatsApp
+        </a>
+        <a href="tel:+919641718709" class="btn btn-primary">
+            <i class="fas fa-phone"></i> Call Now
+        </a>
+    </div>
+
+    <script>
+        // Mobile Menu Toggle
+        function toggleMenu() {
+            const nav = document.querySelector('.nav-links');
+            nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
+            nav.style.position = 'absolute';
+            nav.style.top = '100%';
+            nav.style.left = '0';
+            nav.style.right = '0';
+            nav.style.background = 'white';
+            nav.style.flexDirection = 'column';
+            nav.style.padding = '2rem';
+            nav.style.boxShadow = 'var(--shadow-lg)';
+        }
+
+        // Form Submission Handler
+        function handleSubmit(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const form = e.target;
+            const name = form.querySelector('input[type="text"]').value;
+            const profession = form.querySelector('select').value;
+            const phone = form.querySelector('input[type="tel"]').value;
+            const message = form.querySelector('textarea').value;
+            
+            // Create WhatsApp message
+            const whatsappText = `Hi Mihir,%0A%0AI'm ${name}, a ${profession}.%0A%0AI'm interested in getting a website for my practice.%0A%0AMy phone: ${phone}%0A%0ADetails: ${message || 'Please call me to discuss.'}`;
+            
+            // Open WhatsApp
+            window.open(`https://wa.me/919641718709?text=${whatsappText}`, '_blank');
+            
+            // Reset form
+            form.reset();
+        }
+
+        // Smooth Scroll for Navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 100) {
+                navbar.style.boxShadow = '0 4px 6px -1px rgba(0, 0, 0, 0.1)';
+            } else {
+                navbar.style.boxShadow = 'none';
+            }
+        });
+
+        // Intersection Observer for Animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all cards
+        document.querySelectorAll('.profession-card, .result-card, .pricing-card, .step').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>'''
+
